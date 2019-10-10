@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ_FINANCEIRO.HDB_FINANCEIRO.02_Transformacao::TFI_CUSTOS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="TFI_CUSTOS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ_FINANCEIRO.HDB_FINANCEIRO.04_Persistencia::PFI_RAZAO_TOTAL">
+    <resourceUri>PROJ_FINANCEIRO.HDB_FINANCEIRO.04_Persistencia::PFI_RAZAO_TOTAL</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_RAZAO_TOTAL" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="data_lancamento"/>
+      <viewAttribute id="data_vencimento"/>
+      <viewAttribute id="num_transacao"/>
+      <viewAttribute id="tipo_transacao"/>
+      <viewAttribute id="numero_projeto"/>
+      <viewAttribute id="nome_projeto"/>
+      <viewAttribute id="obs"/>
+      <viewAttribute id="conta_contra"/>
+      <viewAttribute id="CABECALHO_Ref1"/>
+      <viewAttribute id="CABECALHO_Ref2"/>
+      <viewAttribute id="CABECALHO_Ref3"/>
+      <viewAttribute id="LINHA_Ref1"/>
+      <viewAttribute id="LINHA_Ref2"/>
+      <viewAttribute id="nome_conta_contra"/>
+      <viewAttribute id="unidade2"/>
+      <viewAttribute id="unidade3"/>
+      <viewAttribute id="unidade4"/>
+      <viewAttribute id="unidade5"/>
+      <viewAttribute id="Account"/>
+      <viewAttribute id="Debit"/>
+      <viewAttribute id="Credit"/>
+      <viewAttribute id="DebCred"/>
+      <viewAttribute id="AcctName"/>
+      <viewAttribute id="FONTE"/>
+    
+      <viewAttribute id="uni2_desc"/>
+      <viewAttribute id="uni3_desc"/>
+      <viewAttribute id="uni4_desc"/>
+      <viewAttribute id="uni5_desc"/>
+    
+      <viewAttribute id="nome_item"/>
+      <viewAttribute id="tipo_item"/>
+      <viewAttribute id="periodo_item"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="REALIZADO" datatype="DECIMAL" length="17" scale="2" expressionLanguage="SQL">
+        <formula>&quot;Debit&quot;-&quot;Credit&quot;</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="PERIODO" datatype="NVARCHAR" length="6" expressionLanguage="SQL">
+        <formula>LEFT(&quot;data_lancamento&quot;, 7)</formula>
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="ITEM_SEGUNDO_NIVEL" datatype="NVARCHAR" length="100" expressionLanguage="COLUMN_ENGINE">
+    
+        <formula>if(isnull(&quot;nome_projeto&quot;), &quot;obs&quot;,  &quot;nome_projeto&quot;)</formula>
+    
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="ITEM_PRIMEIRO_NIVEL" datatype="NVARCHAR" length="8" expressionLanguage="COLUMN_ENGINE">
+    
+        <formula>if (&quot;unidade4&quot; = 'BENEF' or &quot;unidade4&quot; = 'REMUNERA', 'Rateio Remuneração PJ / CLT', &quot;uni4_desc&quot;)</formula>
+    
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="ITEM_TERCEIRO_NIVEL" datatype="NVARCHAR" length="100" expressionLanguage="COLUMN_ENGINE">
+    
+        <formula>if (&quot;TIPO_NOME_PERIODO&quot; = ' -  - ', if(isnull(&quot;nome_projeto&quot;), '',  &quot;obs&quot;), &quot;TIPO_NOME_PERIODO&quot;)</formula>
+    
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="TIPO_NOME_PERIODO" datatype="NVARCHAR" length="100" expressionLanguage="COLUMN_ENGINE">
+    
+        <formula>&quot;nome_item&quot; + ' - ' + &quot;tipo_item&quot; + ' - ' + &quot;periodo_item&quot;</formula>
+    
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="UNIDADE" datatype="NVARCHAR" length="40" expressionLanguage="COLUMN_ENGINE">
+    
+        <formula>if(&quot;unidade2&quot; = 'C.S.C.', if(&quot;FONTE&quot; = 'ITS', 'C.S.C. - Sul', 'C.S.C. - Sudeste'), 
+if(&quot;unidade2&quot; = 'INOVACAO', if(&quot;uni3_desc&quot; = '' or isnull(&quot;uni3_desc&quot;), 'Inovação', if( &quot;FONTE&quot; = 'ITS', &quot;uni3_desc&quot; + ' - ' + 'Sul', &quot;uni3_desc&quot; + ' - ' + 'Sudeste')),  &quot;uni2_desc&quot;))</formula>
+    
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="PROJ_FINANCEIRO.HDB_FINANCEIRO.04_Persistencia::PFI_RAZAO_TOTAL"/>
+  
+    <filter>in(&quot;unidade2&quot;,'C.E.O.', 'C.S.C.','CONSULT','INOVACAO','MKT','P.M.O.' )</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="P_RAZAO_TOTAL">
+  <attributes>
+    <attribute id="nome_projeto" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Projeto"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="nome_projeto"/>
+    </attribute>
+    <attribute id="obs" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Observação"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="obs"/>
+    </attribute>
+    <attribute id="unidade2" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unidade 02"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="unidade2"/>
+    </attribute>
+    <attribute id="unidade3" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unidade 03"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="unidade3"/>
+    </attribute>
+    <attribute id="unidade4" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unidade 04"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="unidade4"/>
+    </attribute>
+    <attribute id="unidade5" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unidade 05"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="unidade5"/>
+    </attribute>
+    <attribute id="PERIODO" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Período"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="PERIODO"/>
+    </attribute>
+  
+    <attribute id="NIVEL02" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Nível 02"/>
+  
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="ITEM_SEGUNDO_NIVEL"/>
+  
+    </attribute>
+  
+    <attribute id="NIVEL01" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Nível 01"/>
+  
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="ITEM_PRIMEIRO_NIVEL"/>
+  
+    </attribute>
+  
+    <attribute id="NIVEL03" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Nível 03"/>
+  
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="ITEM_TERCEIRO_NIVEL"/>
+  
+    </attribute>
+  
+    <attribute id="uni2_desc" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Descr Unidade 02"/>
+  
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="uni2_desc"/>
+  
+    </attribute>
+    <attribute id="uni3_desc" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Descr Unidade 03"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="uni3_desc"/>
+    </attribute>
+    <attribute id="uni4_desc" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Descr Unidade 04"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="uni4_desc"/>
+    </attribute>
+    <attribute id="uni5_desc" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Descr Unidade 05"/>
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="uni5_desc"/>
+    </attribute>
+  
+    <attribute id="UNIDADE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unidade"/>
+  
+      <keyMapping columnObjectName="P_RAZAO_TOTAL" columnName="UNIDADE"/>
+  
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="num_transacao" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transação"/>
+      <measureMapping columnObjectName="P_RAZAO_TOTAL" columnName="num_transacao"/>
+    </measure>
+    <measure id="REALIZADO" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Realizado"/>
+      <measureMapping columnObjectName="P_RAZAO_TOTAL" columnName="REALIZADO"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_RAZAO_TOTAL" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="96" y="217"/>
+      <rectangleSize height="30" width="150"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

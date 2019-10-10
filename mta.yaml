@@ -1,0 +1,19 @@
+ID: PROJ_FINANCEIRO
+_schema-version: '2.1'
+description: Projeto Financeiro ITS
+version: 0.0.1
+
+modules:
+ - name: HDB_FINANCEIRO
+   type: hdb
+   path: HDB_FINANCEIRO
+   requires:
+    - name: hdi_HDB_FINANCEIRO
+
+resources:
+ - name: hdi_HDB_FINANCEIRO
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+   

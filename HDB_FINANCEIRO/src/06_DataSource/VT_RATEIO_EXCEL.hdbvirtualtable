@@ -1,0 +1,14 @@
+VIRTUAL TABLE "PROJ_FINANCEIRO.HDB_FINANCEIRO.06_DataSource::VT_RATEIO_EXCEL" AT "FileAdapter"."<NULL>"."<NULL>"."TESTE_ITS"
+
+REMOTE PROPERTY 'dataprovisioning_parameters'=
+'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Parameters>
+<Parameter name="FORCE_FILENAME_PATTERN">%.csv</Parameter>
+<Parameter name="FORCE_DIRECTORY_PATTERN">/usr/sap/dataprovagent/SAC_FileAdapter</Parameter>
+<Parameter name="FORMAT">CSV</Parameter>
+<Parameter name="ROW_DELIMITER">\n</Parameter>
+<Parameter name="SKIP_HEADER_LINES">1</Parameter>
+<Parameter name="COLUMN_DELIMITER">;</Parameter>
+<Parameter name="COLUMN">UNIDADE;VARCHAR(20)</Parameter>
+<Parameter name="COLUMN">DEBITO;INTEGER</Parameter>
+</Parameters>';

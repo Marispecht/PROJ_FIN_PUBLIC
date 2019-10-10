@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PROJ_FINANCEIRO.HDB_FINANCEIRO.03_Fundacao::FFI_RAZAO_ITS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="FFI_RAZAO_ITS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PROJ_FINANCEIRO.HDB_FINANCEIRO.06_DataSource::VT_VW_IB_RAZAO_ITS">
+    <resourceUri>PROJ_FINANCEIRO.HDB_FINANCEIRO.06_DataSource::VT_VW_IB_RAZAO_ITS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="RAZAO_ITS" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="data_lancamento"/>
+      <viewAttribute id="data_vencimento"/>
+      <viewAttribute id="num_transacao"/>
+      <viewAttribute id="tipo_transacao"/>
+      <viewAttribute id="numero_projeto"/>
+      <viewAttribute id="nome_projeto"/>
+      <viewAttribute id="obs"/>
+      <viewAttribute id="conta_contra"/>
+      <viewAttribute id="CABECALHO_Ref1"/>
+      <viewAttribute id="CABECALHO_Ref2"/>
+      <viewAttribute id="CABECALHO_Ref3"/>
+      <viewAttribute id="LINHA_Ref1"/>
+      <viewAttribute id="LINHA_Ref2"/>
+      <viewAttribute id="nome_conta_contra"/>
+      <viewAttribute id="unidade2"/>
+      <viewAttribute id="unidade3"/>
+      <viewAttribute id="unidade4"/>
+      <viewAttribute id="unidade5"/>
+      <viewAttribute id="Account"/>
+      <viewAttribute id="Debit"/>
+      <viewAttribute id="Credit"/>
+      <viewAttribute id="DebCred"/>
+      <viewAttribute id="AcctName"/>
+    
+      <viewAttribute id="uni2_desc"/>
+      <viewAttribute id="uni3_desc"/>
+      <viewAttribute id="uni4_desc"/>
+      <viewAttribute id="uni5_desc"/>
+      <viewAttribute id="ATIVIDADE"/>
+      <viewAttribute id="C_Contabil"/>
+      <viewAttribute id="C_C_NOME"/>
+    
+      <viewAttribute id="TIPO"/>
+      <viewAttribute id="NOME"/>
+      <viewAttribute id="PERIODO"/>
+    
+      <viewAttribute id="ativ_desc"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PROJ_FINANCEIRO.HDB_FINANCEIRO.06_DataSource::VT_VW_IB_RAZAO_ITS"/>
+    <filter>&quot;data_lancamento&quot; &gt;= '2019-01-01 00:00:00.000000000' and not((&quot;unidade2&quot;) is null) and &quot;unidade2&quot; != ''</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="RAZAO_ITS">
+  <attributes>
+    <attribute id="data_lancamento" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="data_lancamento"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="data_lancamento"/>
+    </attribute>
+    <attribute id="data_vencimento" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="data_vencimento"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="data_vencimento"/>
+    </attribute>
+    <attribute id="num_transacao" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="num_transacao"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="num_transacao"/>
+    </attribute>
+    <attribute id="tipo_transacao" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="tipo_transacao"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="tipo_transacao"/>
+    </attribute>
+    <attribute id="numero_projeto" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="numero_projeto"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="numero_projeto"/>
+    </attribute>
+    <attribute id="nome_projeto" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="nome_projeto"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="nome_projeto"/>
+    </attribute>
+    <attribute id="obs" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="obs"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="obs"/>
+    </attribute>
+    <attribute id="conta_contra" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="conta_contra"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="conta_contra"/>
+    </attribute>
+    <attribute id="CABECALHO_Ref1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CABECALHO_Ref1"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="CABECALHO_Ref1"/>
+    </attribute>
+    <attribute id="CABECALHO_Ref2" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CABECALHO_Ref2"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="CABECALHO_Ref2"/>
+    </attribute>
+    <attribute id="CABECALHO_Ref3" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CABECALHO_Ref3"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="CABECALHO_Ref3"/>
+    </attribute>
+    <attribute id="LINHA_Ref1" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LINHA_Ref1"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="LINHA_Ref1"/>
+    </attribute>
+    <attribute id="LINHA_Ref2" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LINHA_Ref2"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="LINHA_Ref2"/>
+    </attribute>
+    <attribute id="nome_conta_contra" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="nome_conta_contra"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="nome_conta_contra"/>
+    </attribute>
+    <attribute id="unidade2" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="unidade2"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="unidade2"/>
+    </attribute>
+    <attribute id="unidade3" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="unidade3"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="unidade3"/>
+    </attribute>
+    <attribute id="unidade4" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="unidade4"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="unidade4"/>
+    </attribute>
+    <attribute id="unidade5" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="unidade5"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="unidade5"/>
+    </attribute>
+    <attribute id="Account" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Account"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="Account"/>
+    </attribute>
+    <attribute id="DebCred" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DebCred"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="DebCred"/>
+    </attribute>
+    <attribute id="AcctName" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AcctName"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="AcctName"/>
+    </attribute>
+  
+    <attribute id="uni2_desc" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uni2_desc"/>
+  
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="uni2_desc"/>
+  
+    </attribute>
+    <attribute id="uni3_desc" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uni3_desc"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="uni3_desc"/>
+    </attribute>
+    <attribute id="uni4_desc" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uni4_desc"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="uni4_desc"/>
+    </attribute>
+    <attribute id="uni5_desc" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="uni5_desc"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="uni5_desc"/>
+    </attribute>
+    <attribute id="ATIVIDADE" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ATIVIDADE"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="ATIVIDADE"/>
+    </attribute>
+    <attribute id="C_Contabil" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="C_Contabil"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="C_Contabil"/>
+    </attribute>
+    <attribute id="C_C_NOME" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="C_C_NOME"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="C_C_NOME"/>
+    </attribute>
+    <attribute id="TIPO" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="TIPO"/>
+    </attribute>
+    <attribute id="NOME" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOME"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="NOME"/>
+    </attribute>
+    <attribute id="PERIODO_ITEM" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PERIODO_ITEM"/>
+      <keyMapping columnObjectName="RAZAO_ITS" columnName="PERIODO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="FONTE" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Fonte de dados"/>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
+        <formula>'ITS'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="Debit" order="20" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Debit"/>
+      <measureMapping columnObjectName="RAZAO_ITS" columnName="Debit"/>
+    </measure>
+    <measure id="Credit" order="21" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Credit"/>
+      <measureMapping columnObjectName="RAZAO_ITS" columnName="Credit"/>
+    </measure></baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="RAZAO_ITS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="94" y="209"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>   
